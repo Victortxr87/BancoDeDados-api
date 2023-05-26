@@ -9,34 +9,26 @@ const pool = new Pool ({
     'port': process.env.DB_PORT,
     'database': process.env.DB_NAME
 
-})
+});
 
 const initDatabase = async () => {
 
-    const db = await pool.connect();
 
-    try {
-
-        await db.query(`
+    await pool.query(`
         CREATE TABLE IF NOT EXISTS experiencias (
-        id SERIAL PRIMARY KEY,
-        titulo VARCHAR(255) NOT NULL,
-        tipo VARCHAR(255) NOT NULL,
-        descricao TEXT NOT NULL,
-        ano_inicio INT NOT NULL,
-        ano_fim INT
+                id SERIAL PRIMARY KEY,
+                titulo VARCHAR(255) NOT NULL,
+                tipo VARCHAR(255) NOT NULL,
+                descricao TEXT NOT NULL,
+                ano_inicio INT NOT NULL,
+                ano_fim INT
 
-        );
+             );
 
-    `);
+        `);
     console.log('Banco de dados criado com sucesso!');
 
-    } catch (error) {
-        console.log(error);
-    } finally {
-        db.release();
-    }
 
+};
 
-}
-            module.exports = {pool, initDatabase};
+module.exports = {pool, initDatabase};
