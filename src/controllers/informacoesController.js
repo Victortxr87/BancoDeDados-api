@@ -11,6 +11,13 @@ exports.createInformacoes = async (req, res) => {
    res.json(newInformacoes);
 };
 
+exports.updateInformacoes = async (req, res) => {
+   
+   const informacoes = req.body;
+   const updateInformacoes = await informacoesRepository.updateInformacoes(informacoes);
+   res.json(updateInformacoes);
+};
+
 exports.deleteInformacoes = async (req, res) => {
    await informacoesRepository.deleteInformacoes();
    res.json({ message: `Informações removidas com sucesso!` });
