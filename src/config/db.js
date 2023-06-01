@@ -12,6 +12,7 @@ const pool = new Pool ({
 });
 
 const initDatabase = async () => {
+      
     await pool.query(`
        CREATE TABLE IF NOT EXISTS experiencias (
              id SERIAL PRIMARY KEY,
@@ -40,6 +41,16 @@ const initDatabase = async () => {
              cargo VARCHAR(255) NOT NULL,
              resumo TEXT NOT NULL
        );
+    `);
+    
+    await pool.query (`
+
+    CREATE TABLE IF NOT EXISTS usuarios (
+      id int PRIMARY KEY,  
+      email VARCHAR(255) NOT NULL,
+      password VARCHAR(255) NOT NULL
+    );
+    
     `);
  
   module.exports = { pool, initDatabase };

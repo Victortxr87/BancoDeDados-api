@@ -1,9 +1,12 @@
 require ('dotenv').config();
 const express = require('express');
 const {initDatabase } = require('./config/db');
+const cors = require('cors');
+
 const experienciasRoute = require('./routes/experienciasRoute');
 const portfolioRoute = require('./routes/portfolioRoute');
 const informacoesRoute = require("./routes/informacoesRoute");
+const authRoute = require("./routes/AuthRoute");
 
 
 const app = express();
@@ -16,11 +19,14 @@ app.get('/', (req, res) => {
 
 });
 
+app.use(cors());
+
 app.use(express.json());
 
 app.use('/api/experiencias', experienciasRoute);
 app.use('/api/portfolio', portfolioRoute);
 app.use("/api/informacoes", informacoesRoute);
+app.use("/api/auth", authRoute);
 
 initDatabase();
 
