@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", informacoesController.getInformacoes);
 router.post("/", informacoesController.createInformacoes);
-router.put("/1", informacoesController.updateInformacoes);
+router.put("/", informacoesController.updateInformacoes);
 router.delete("/", informacoesController.deleteInformacoes);
 
 

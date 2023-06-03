@@ -1,6 +1,7 @@
 require ('dotenv').config();
 const express = require('express');
 const {initDatabase } = require('./config/db');
+
 const cors = require('cors');
 
 const experienciasRoute = require('./routes/experienciasRoute');
@@ -25,8 +26,8 @@ app.use(express.json());
 
 app.use('/api/experiencias', experienciasRoute);
 app.use('/api/portfolio', portfolioRoute);
-app.use("/api/informacoes", informacoesRoute);
-app.use("/api/auth", authRoute);
+app.use('/api/informacoes', informacoesRoute);
+app.use('/api/auth', authRoute);
 
 initDatabase();
 

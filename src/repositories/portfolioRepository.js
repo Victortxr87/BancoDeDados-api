@@ -13,11 +13,11 @@ exports.getProjetoById = async (id) => {
 exports.createProjeto = async (projeto) => {
    const result = await pool.query(
       `
-          INSERT INTO portfolio (titulo, link, imagem)
+          INSERT INTO portfolio (title, link, image)
           values ($1, $2, $3)
           RETURNING *
        `,
-      [projeto.titulo, projeto.link, projeto.imagem]
+      [projeto.title, projeto.link, projeto.image]
    );
    return result.rows[0];
 };
@@ -26,11 +26,11 @@ exports.updateProjeto = async (id, projeto) => {
    const result = await pool.query(
       `
            UPDATE portfolio
-           SET titulo = $1, link = $2, imagem = $3
+           SET title = $1, link = $2, image = $3
            WHERE id = $4
            RETURNING *
         `,
-      [projeto.titulo, projeto.link, projeto.imagem, id]
+      [projeto.title, projeto.link, projeto.image, id]
    );
    return result.rows[0];
 };

@@ -7,7 +7,8 @@ const pool = new Pool ({
     'password': process.env.DB_PASSWORD,
     'host': process.env.DB_HOST,
     'port': process.env.DB_PORT,
-    'database': process.env.DB_NAME
+    'database': process.env.DB_NAME,
+    'SSL': process.env.DB_SSL
 
 });
 
@@ -19,17 +20,17 @@ const initDatabase = async () => {
              titulo VARCHAR(255) NOT NULL,
              tipo VARCHAR(255) NOT NULL,
              descricao TEXT NOT NULL,
-             ano_inicio INT NOT NULL,
-             ano_fim INT
+             "anoInicio" INT NOT NULL,
+             "anoFim" INT
        );
     `);
  
     await pool.query(`
        CREATE TABLE IF NOT EXISTS portfolio (
              id SERIAL PRIMARY KEY,
-             titulo VARCHAR(255) NOT NULL,
+             title VARCHAR(255) NOT NULL,
              link VARCHAR(255) NOT NULL,
-             imagem VARCHAR(255) NOT NULL
+             image VARCHAR(255) NOT NULL
        );
     `);
  
